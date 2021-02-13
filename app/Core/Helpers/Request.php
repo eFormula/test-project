@@ -67,15 +67,31 @@ class Request
      *
      * @return string
      */
-    public static function get(string $parameter, string $validation = null): string
+    public static function get(string $parameter, string $validation = null): ?string
     {
         $value = null;
         if (isset($_REQUEST[$parameter])) {
             $value = trim(htmlspecialchars($_REQUEST[$parameter]));
         }
-        if (empty($value)) {
+        if ($value != 0 && empty($value)) {
             $value = filter_var($value, $validation);
         }
         return $value;
+    }
+
+    /**
+     * @return bool
+     */
+    public static function isGet()
+    {
+        return $_SERVER['REQUEST_METHOD'] === 'GET';
+    }
+
+    /**
+     * @return bool
+     */
+    public static function isPost()
+    {
+        return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
 }

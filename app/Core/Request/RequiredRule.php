@@ -20,7 +20,7 @@ class RequiredRule extends AbstractRule
      */
     public function isValid($ruleValue, $valueToCompare): bool
     {
-        if (empty($valueToCompare)) {
+        if ($valueToCompare != 0 && empty($valueToCompare)) {
             $this->addError("This field is required.");
             return false;
         }

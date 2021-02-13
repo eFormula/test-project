@@ -35,14 +35,20 @@
         <div style="background-color: #e9ecef; color: #333; border-bottom: 1px solid #b9bbbe; display: flex">
             <div style="padding : 20px; margin-left : 20px;background-color: #333; color: #fff;"><?= ($index +
                     1) ?></div>
-            <div style="padding : 20px; "><?= " - " .
-                $trace["file"] .
-                ":" .
-                $trace["line"] .
-                " - " .
-                $trace["class"] .
-                ":" .
-                $trace["function"]; ?></div>
+            <div style="padding : 20px; ">
+                <?php if (isset($trace["file"])) {
+                    echo $trace["file"] . "-";
+                } ?>
+                <?php if (isset($trace["line"])) {
+                    echo $trace["line"] . "-";
+                } ?>
+                <?php if (isset($trace["class"])) {
+                    echo $trace["class"] . "-";
+                } ?>
+                <?php if (isset($trace["class"])) {
+                    echo $trace["class"] . "-";
+                } ?>
+                <?= ":" . $trace["function"]; ?></div>
         </div>
         <?php
     } ?>

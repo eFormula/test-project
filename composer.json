@@ -10,7 +10,9 @@
   ],
   "minimum-stability": "stable",
   "require": {
-    "vlucas/phpdotenv": "^5.3"
+    "vlucas/phpdotenv": "^5.3",
+    "ext-json": "*",
+    "ext-intl": "*"
   },
   "autoload": {
     "psr-4": {

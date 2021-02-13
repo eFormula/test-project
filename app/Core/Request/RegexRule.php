@@ -10,7 +10,7 @@ namespace App\Core\Request;
  * @package  Test project
  * @author   Hamed Ghasempour <hamedghasempour@gmail.com>
  */
-class MinRule extends AbstractRule
+class RegexRule extends AbstractRule
 {
     /**
      * @param mixed $ruleValue
@@ -20,8 +20,9 @@ class MinRule extends AbstractRule
      */
     public function isValid($ruleValue, $valueToCompare): bool
     {
-        if ($valueToCompare < $ruleValue) {
-            $this->addError("The value should not be less than $ruleValue");
+        preg_match($ruleValue, $valueToCompare, $matches);
+        if(empty($matches)) {
+            $this->addError("The provided value is incorrect.");
             return false;
         }
         return true;

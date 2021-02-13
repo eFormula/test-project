@@ -99,6 +99,14 @@ class RequestValidation
     }
 
     /**
+     * @return array
+     */
+    public function getData(): array
+    {
+        return $this->data;
+    }
+
+    /**
      * @param AbstractRule $rule
      */
     private function appendErrors(AbstractRule $rule): void
@@ -130,10 +138,10 @@ class RequestValidation
      * @param string $fieldName
      * @param mixed  $receivedValue
      *
-     * @return string
+     * @return void
      */
-    public function assignData(string $fieldName, $receivedValue): string
+    private function assignData(string $fieldName, $receivedValue): void
     {
-        return $this->data[$fieldName] = $receivedValue;
+        $this->data[$fieldName] = $receivedValue;
     }
 }

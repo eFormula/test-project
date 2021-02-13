@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace App\Core\Exception\Exceptions;
 
 use Exception;
 use Throwable;
@@ -13,7 +13,7 @@ use Throwable;
  * @package  Test project
  * @author   Hamed Ghasempour <hamedghasempour@gmail.com>
  */
-class NotFoundException extends Exception
+class NotFoundException extends Exception implements ShouldPublishInterface
 {
     /**
      * CasinoException constructor.
