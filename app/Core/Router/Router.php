@@ -2,6 +2,7 @@
 
 namespace App\Core\Router;
 
+use App\Core\Helpers\Str;
 use App\Core\Helpers\Url;
 use App\Exceptions\NotFoundException;
 
@@ -64,7 +65,7 @@ class Router
         } else {
             throw new NotFoundException();
         }
-        $controllerNamespace = "App\\Http\\Controllers\\" . ucfirst($controllerName) . "Controller";
+        $controllerNamespace = "App\\Http\\Controllers\\" . Str::dashToPascal($controllerName) . "Controller";
         if (!class_exists($controllerNamespace)) {
             throw new NotFoundException();
         }
@@ -84,6 +85,6 @@ class Router
         } else {
             $actionName = "index";
         }
-        return $actionName;
+        return Str::dashToCamel($actionName);
     }
 }
