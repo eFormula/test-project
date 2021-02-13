@@ -1,0 +1,22 @@
+{
+  "name": "hgh/test-project",
+  "description": "The test project",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Hamed Ghasempour",
+      "email": "hamedghasempour@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "vlucas/phpdotenv": "^5.3",
+    "ext-json": "*",
+    "ext-intl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}
