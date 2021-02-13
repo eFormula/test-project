@@ -5,7 +5,7 @@ namespace App\Core;
 use App\Core\Exception\Renderer\ExceptionRenderer;
 use App\Core\Helpers\Url;
 use App\Core\Router\Router;
-use App\Exceptions\NotFoundException;
+use App\Core\Exception\Exceptions\NotFoundException;
 use Dotenv\Dotenv;
 use Throwable;
 
@@ -75,7 +75,7 @@ class Application
         $router = new Router();
         $controllerNamespace = $router->getControllerNamespace();
         $controller = new $controllerNamespace();
-        $action = $router->getAction();
+        $action = $router->getAction($controller);
         $controller->$action();
     }
 
@@ -99,7 +99,7 @@ class Application
     public static function debug()
     {
         $debugFlag = getenv("APP_DEBUG");
-        if (empty($debugFlag)) {
+        if (is_null($debugFlag)) {
             $debugFlag = true;
         }
         return $debugFlag == "true";
