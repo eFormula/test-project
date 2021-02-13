@@ -2,9 +2,9 @@
 
 namespace App\Core\Router;
 
+use App\Core\Exception\Exceptions\NotFoundException;
 use App\Core\Helpers\Str;
 use App\Core\Helpers\Url;
-use App\Exceptions\NotFoundException;
 
 /**
  * This class will route the requests to end controller
@@ -75,16 +75,22 @@ class Router
     /**
      * Get the action name
      *
+     * @param $controller
+     *
      * @return string
+     * @throws NotFoundException
      */
-    public function getAction(): string
+    public function getAction($controller): string
     {
         if (isset($this->sections[1]) && !empty($this->sections[1])) {
             $sections = explode("?", $this->sections[1]);
-            $actionName = $sections[0];
+            $actionName = Str::dashToCamel($sections[0]);
         } else {
             $actionName = "index";
         }
-        return Str::dashToCamel($actionName);
+        if (!method_exists($controller, $actionName)) {
+            throw new NotFoundException();
+        }
+        return $actionName;
     }
 }
