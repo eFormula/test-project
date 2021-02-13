@@ -21,7 +21,7 @@ class MinRule extends AbstractRule
     public function isValid($ruleValue, $valueToCompare): bool
     {
         if ($valueToCompare < $ruleValue) {
-            $this->addError("The value should not be equal or less than $ruleValue");
+            $this->addError("The value should not be less than $ruleValue");
             return false;
         }
         return true;
