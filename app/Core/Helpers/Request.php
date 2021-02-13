@@ -78,4 +78,20 @@ class Request
         }
         return $value;
     }
+
+    /**
+     * @return bool
+     */
+    public static function isGet()
+    {
+        return $_SERVER['REQUEST_METHOD'] === 'GET';
+    }
+
+    /**
+     * @return bool
+     */
+    public static function isPost()
+    {
+        return $_SERVER['REQUEST_METHOD'] === 'POST';
+    }
 }
