@@ -67,13 +67,13 @@ class Request
      *
      * @return string
      */
-    public static function get(string $parameter, string $validation = null): string
+    public static function get(string $parameter, string $validation = null): ?string
     {
         $value = null;
         if (isset($_REQUEST[$parameter])) {
             $value = trim(htmlspecialchars($_REQUEST[$parameter]));
         }
-        if (empty($value)) {
+        if ($value != 0 && empty($value)) {
             $value = filter_var($value, $validation);
         }
         return $value;
