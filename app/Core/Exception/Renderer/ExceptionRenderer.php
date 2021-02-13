@@ -39,6 +39,7 @@ class ExceptionRenderer
      */
     public function render(): void
     {
+        $throwable = $this->throwable;
         if (Application::debug()) {
             include(__DIR__ . "/fullExceptionView.php");
         } else {
